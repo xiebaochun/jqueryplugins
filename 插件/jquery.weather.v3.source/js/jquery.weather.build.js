@@ -1,15 +1,3 @@
-/**
- * ! jQuery wheater 3.0
- *
- * Page URL		: http://julying.com/lab/weather/
- * Mail 		: 316970111@qq.com
- * QQ 			: 316970111 
- * created 		: 2010-09-10 13:55:29 
- * last update 	: 2013-03-1 10:30:00
- * Add 			: China Shenzhen
- *
- * Copyright 2013 | julying.com 
- */
 ;(function(_doc){
 	var optionDefaults = {
 			parentbox 	: 'body' ,	//父级容器  ，支持 jQuery/css3 选择器
