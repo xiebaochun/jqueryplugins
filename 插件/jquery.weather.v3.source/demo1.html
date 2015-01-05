@@ -1,101 +1,132 @@
-<!doctype html>
+<!doctype HTML>
 <html>
-<head>
-<meta charset="utf-8">
-<title>jQuery weather</title>
-</head>
-
-<body>
-
-
-<link href="images/default/julying-weather.css" rel="stylesheet" type="text/css">
-<link href="css/main.css" rel="stylesheet" type="text/css">
-
-<script src="http://xiebaochun.github.io/jquery/jquery-1.7.2.min.js"></script>
-<script src="js/jquery.weather.js"></script> 
- 
-<script> 
- 
-// 这里是一个简单例子，具体如果有复杂效果，可以直接修改源码。。。。
-
-;var jQueryWeatherConfig = {
-	lang : {
-		day : '白天',
-		night : '夜晚',
-		temp : '°C',
-		wind : '级风',
-		wangzimo : '微个日光日'
-	},
-	convert : function(sky){
-		var weatherInfo = {
-				cloudy 		: ['多云','多云转阴','晴转多云','阴转多云'],
-				overcast	: ['阴','雾','沙尘暴','浮尘','扬沙','强沙尘暴'],
-				rainy		: ['多云转小雨','小雨转多云','小雨','中雨','大雨','暴雨','大暴雨','特大暴雨','冻雨','小雨转中雨','中雨转大雨','大雨转暴雨','暴雨转大暴雨','大暴雨转特大暴雨','阵雨','雷阵雨','雷阵雨伴有冰雹'],
-				sleet		: ['雨夹雪'],
-				snow		: ['阵雪','小雪','中雪','大雪','暴雪','小雪转中雪','中雪转大雪','大雪转暴雪','中雪转小雪','大雪转中雪','暴雪转大雪'],
-				sunshine	: ['晴']
-			},
-			weather = '',
-			state = '';
-		for( state in weatherInfo ){
-			if( $.inArray( sky , weatherInfo[state] ) > -1 ){
-				weather = state;
-				break;
-			}
-		} 
-		return weather || state || 'sunshine'  ;
-	}
-};
-
-
-
-
- 
-$(function(){
-	
-	
-	$.getScript('http://php.weather.sina.com.cn/iframe/index/w_cl.php?code=js&day=0&city=&charset=utf-8', function(){
-		//window.SWther 这是返回的天气情况
-		var city, dataInfo = window.SWther.w ;
-		for( var city in dataInfo ); //获取 天气
-		dataInfo = dataInfo[city][0];
-		//jQueryWeatherConfig 
-		var weatherData = {
-			city : city ,
-			date : SWther.add.now.split(' ')[0] || '',
-			day_weather: dataInfo.s1,
-			night_weather :dataInfo.s2,
-			day_temp: dataInfo.t1,
-			night_temp: dataInfo.t2,
-			day_wind:dataInfo.p1,
-			night_wind: dataInfo.p2
-		};
-		
-		var hour = (new Date( SWther.add.now )).getHours();
-		var sky = hour > 18 ? weatherData.day_weather : weatherData.night_weather ;
-		var weatherBox = $('#debug').weather({ sky : jQueryWeatherConfig.convert( sky ), weatherData : weatherData , config : jQueryWeatherConfig });
-		  
-		//weatherBox 是 整个天气图标的跟节点的 jQuery ，所以可以直接操作，可以自己随意扩展效果。
-		setTimeout(function(){
-			weatherBox.hide( );
-		}, 1000 );
-		
-		setTimeout(function(){
-			weatherBox.show();
-		}, 2000 );
-	});
-	
-});
-
-</script>
-
-
-最近比较忙，界面比较简单，将就用一下吧，^_^ 。   有问题加群：<a href="http://jq.qq.com/?_wv=1027&k=aR1lSu" title="【杭州前端开发】" target="_blank" class="qq"><img src="http://qplus3.idqqimg.com/qun/portal/img/logo2.png" width="21" height="21" alt="点击链接加入群【杭州前端开发】" title="点击链接加入群【杭州前端开发】"></a>
-
-<div id="debug" style=" margin:50px; height:300px; width:800px; border: 1px solid #C00; position:relative;"></div> 
+	<head>
+		<style type="text/css">		
+			
+		</style>
+		<link href="http://xiebaochun.github.io/docs/css/bootstrap.min.css" rel="stylesheet">
+		<link href="images/default/julying-weather.css" rel="stylesheet" type="text/css">
+		<link href="css/main.css" rel="stylesheet" type="text/css">
+		<script src="http://xiebaochun.github.io/jquery/jquery-1.7.2.min.js"></script>
+		<script src="js/jquery.weather.js"></script> 
+		<script src="http://xiebaochun.github.io/docs/js/bootstrap.min.js"></script>
+	</head>
+	<body>
+	    <div class="navbar navbar-fixed-top">
+		      <div class="navbar-inner">
+		        <div class="container">
+		          <a class="brand" rel="tooltip" href="http://xiebaochun.github.io/HTML5" title="xiebaochun.github.io Home Page">
+		                  首页
+		                </a>   
+		          <a rel="tooltip" title="Download 代码 &amp; Examples" class="brand"
+		          target="__blank" href="https://github.com/xiebaochun/jqueryplugins/tree/gh-pages/%E6%8F%92%E4%BB%B6/jquery.weather.v3.source">
+		            下载
+		          </a>
+		          <div class="nav-collapse collapse" id="main-menu">
+		            <ul class="nav" id="main-menu-left">
+		              <li>
+		                <a rel="tooltip" title="Github - jQuery Upload File"  target="__blank"
+		                   href="https://github.com/xiebaochun/jqueryplugins/tree/gh-pages/%E6%8F%92%E4%BB%B6/jquery.weather.v3.source">
+		                   Github
+		                </a>
+		              </li>
+		            </ul>
+		          </div>
+		        </div>
+		      </div>
+        </div>
+        <div class="container">
+            <br/>
+            <br/>
+	      <!-- custom code area -->
+        <script>
+        ;var jQueryWeatherConfig = {
+        	lang : {
+        		day : '白天',
+        		night : '夜晚',
+        		temp : '°C',
+        		wind : '级风',
+        		wangzimo : '王子墨'
+        	},
+        	convert : function(sky){
+        		var weatherInfo = {
+        				cloudy 		: ['多云','多云转阴','晴转多云','阴转多云'],
+        				overcast	: ['阴','雾','沙尘暴','浮尘','扬沙','强沙尘暴'],
+        				rainy		: ['多云转小雨','小雨转多云','小雨','中雨','大雨','暴雨','大暴雨','特大暴雨','冻雨','小雨转中雨','中雨转大雨','大雨转暴雨','暴雨转大暴雨','大暴雨转特大暴雨','阵雨','雷阵雨','雷阵雨伴有冰雹'],
+        				sleet		: ['雨夹雪'],
+        				snow		: ['阵雪','小雪','中雪','大雪','暴雪','小雪转中雪','中雪转大雪','大雪转暴雪','中雪转小雪','大雪转中雪','暴雪转大雪'],
+        				sunshine	: ['晴']
+        			},
+        			weather = '',
+        			state = '';
+        		for( state in weatherInfo ){
+        			if( $.inArray( sky , weatherInfo[state] ) > -1 ){
+        				weather = state;
+        				break;
+        			}
+        		} 
+        		return weather || state || 'sunshine'  ;
+        	}
+        };
 
 
 
 
-</body>
+         
+        $(function(){
+        	
+        	
+        	$.getScript('http://php.weather.sina.com.cn/iframe/index/w_cl.php?code=js&day=0&city=&charset=utf-8', function(){
+        		//window.SWther 这是返回的天气情况
+        		var city, dataInfo = window.SWther.w ;
+        		for( var city in dataInfo ); //获取 天气
+        		dataInfo = dataInfo[city][0];
+        		//jQueryWeatherConfig 
+        		var weatherData = {
+        			city : city ,
+        			date : SWther.add.now.split(' ')[0] || '',
+        			day_weather: dataInfo.s1,
+        			night_weather :dataInfo.s2,
+        			day_temp: dataInfo.t1,
+        			night_temp: dataInfo.t2,
+        			day_wind:dataInfo.p1,
+        			night_wind: dataInfo.p2
+        		};
+        		
+        		var hour = (new Date( SWther.add.now )).getHours();
+        		var sky = hour > 18 ? weatherData.day_weather : weatherData.night_weather ;
+        		var weatherBox = $('#debug').weather({ sky : jQueryWeatherConfig.convert( sky ), weatherData : weatherData , config : jQueryWeatherConfig });
+        		  
+        		//weatherBox 是 整个天气图标的跟节点的 jQuery ，所以可以直接操作，可以自己随意扩展效果。
+        		setTimeout(function(){
+        			weatherBox.hide( );
+        		}, 1000 );
+        		
+        		setTimeout(function(){
+        			weatherBox.show();
+        		}, 2000 );
+        	});
+        	
+        });
+
+        </script>
+
+
+        最近比较忙，界面比较简单，将就用一下吧，^_^ 。   有问题可以联系我：<a href="http://sighttp.qq.com/authd?IDKEY=d01512b4843bdedcbb3ce23f610a189d0e5627a2960a72a3" title="前端工程师,王子墨,julying,jQuery" target="_blank" class="qq"><img src="http://wp.qq.com/images/style_45.jpg" width="21" height="21" alt="点击这里给我发消息" title="点击这里给我发消息"></a>
+
+        <div id="debug" style=" margin:50px; height:300px; width:800px; border: 1px solid #C00; position:relative;"></div> 
+
+	      <!-- custom code area end-->
+         <footer id="footer">
+		      <div class="links">
+		          CopyRight by 
+		          <a href="http://xiebaochun.github.io" >微个日光日</a> 
+		          Powered by 
+		          <a href="http://getbootstrap.com/javascript/" >BootStrap</a>
+		         
+		      </div>
+         </footer>
+      </div>
+	</body>
+
 </html>
