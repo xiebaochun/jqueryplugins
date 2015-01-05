@@ -1,13 +1,5 @@
 jQuery weather plug-In 
-ÕâÊÇÒ»¸ö¿ªÔ´µÄ¡¢»ùÓÚjQuery º¯Êý¿âµÄ JavaScript ÌìÆøÔ¤±¨½Å±¾²å¼þ¡£ ´úÂëÓï·¨ÍêÈ«·ûºÏW3CÍøÒ³±ê×¼£¬ÍêÈ«¼æÈÝ¸÷ÖÖÖ÷Á÷ä¯ÀÀÆ÷¡£
-±¾²å¼þÖ÷ÒªÓÃÓÚÌìÆøÔ¤±¨µÄÕ¹Ê¾¡£
-
-
-jquery weather ×÷Õß£º
-Homepage£ºjulying.com
-QQ£º316970111
-
-
-
+è¿™æ˜¯ä¸€ä¸ªå¼€æºçš„ã€åŸºäºŽjQuery å‡½æ•°åº“çš„ JavaScript å¤©æ°”é¢„æŠ¥è„šæœ¬æ’ä»¶ã€‚ ä»£ç è¯­æ³•å®Œå…¨ç¬¦åˆW3Cç½‘é¡µæ ‡å‡†ï¼Œå®Œå…¨å…¼å®¹å„ç§ä¸»æµæµè§ˆå™¨ã€‚
+æœ¬æ’ä»¶ä¸»è¦ç”¨äºŽå¤©æ°”é¢„æŠ¥çš„å±•ç¤ºã€‚
 =================================
-ÌìÆøÍ¼±êµÄ psd¡¢aiÎÄ¼þ¶¼°üº¬ÆäÖÐ£¬Äã¿ÉÒÔ¶ÔÆä½øÐÐÐÞ¸Ä£¬²¢ÇÒ¶Ô ²å¼þ½øÐÐÀ©Õ¹£¨²å¼þÔÊÐí´«µÝ¸ü¶àµÄÌìÆø×´Ì¬£©¡£
+å¤©æ°”å›¾æ ‡çš„ psdã€aiæ–‡ä»¶éƒ½åŒ…å«å…¶ä¸­ï¼Œä½ å¯ä»¥å¯¹å…¶è¿›è¡Œä¿®æ”¹ï¼Œå¹¶ä¸”å¯¹ æ’ä»¶è¿›è¡Œæ‰©å±•ï¼ˆæ’ä»¶å…è®¸ä¼ é€’æ›´å¤šçš„å¤©æ°”çŠ¶æ€ï¼‰ã€‚
